@@ -20,7 +20,6 @@ const parentDir = path.resolve(__dirname, '..');
 app.get("/", (req, res) => {
     res.sendFile(parentDir + '/public/example.html')
 });
-app.post("/", (req, res) => res.send("Hello !!"));
 
 // 发送http请求
 app.post("/httpRequest", (req, res) => {
