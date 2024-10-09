@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container {
+				width: 700px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.httpRequest input,
+			.httpRequest select {
+				border-radius: 0;
+				padding-left: 10px;
+				border: 1px solid #ccc;
+			}
+
+			input:focus,
+			select:focus,
+			textarea:focus {
+				outline: 0;
+			}
+
+			.requestbox,
+			.textarea {
+				display: flex;
+			}
+
+			.requestbox {
+				height: 35px;
+				margin-bottom: 15px;
+			}
+
+			.textarea input {
+				flex-grow: 1;
+				height: 30px;
+			}
+
+			.requestbox input {
+				flex-grow: 1;
+
+			}
+
+			.requestbox button {
+				cursor: pointer;
+				padding: 0 15px;
+				border: 1px solid #ccc;
+			}
+
+			.requestbox button:active {
+				background-color: #cfcfcf;
+			}
+
+			textarea {
+				resize: none;
+				height: 500px;
+				overflow-y: auto;
+				margin-top: 20px;
+				overflow-wrap: break-word;
+				white-space: pre-wrap;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form class="httpRequest">
+				<div class="requestbox">
+					<select name="method">
+						<option value="POST">POST</option>
+						<option value="GET">GET</option>
+						<option value="PUT">PUT</option>
+						<option value="DELETE">DELETE</option>
+					</select>
+					<input name="url" placeholder="请求地址" />
+					<select name="contentType">
+						<option value="application/x-www-form-urlencoded;charset=UTF-8">x-www-form-urlencoded</option>
+						<option value="application/json;charset=UTF-8">application/json</option>
+					</select>
+					<button type="submit">发送</button>
+				</div>
+				<div class="textarea">
+					<input name="headers" placeholder='请求头 {"token": "test"}' />
+					<input name="params" placeholder='请求参数 {"id": "test", ""name": "test"}' />
+				</div>
+			</form>
+			<textarea placeholder="返回结果"></textarea>
+		</div>
+	</body>
+</html>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script>
+	$('form').submit(function(event) {
+		event.preventDefault();
+
+		let serialize = $(this).serializeArray()
+		let form = {}
+		for (let key in serialize) {
+			let it = serialize[key]
+			form[it.name] = it.value
+		}
+
+		let url = form.url
+		if (form.url === '') {
+			console.log('请求URL不能为空')
+			return
+		}
+
+		let headers = form.headers
+		let params = form.params
+		try {
+			if (headers) {
+				headers = JSON.parse(headers)
+			}
+		} catch (e) {
+			console.log('请求header格式不合法')
+			return
+		}
+		try {
+			if (params) {
+				params = JSON.parse(params)
+			}
+		} catch (e) {
+			console.log('请求body格式不合法')
+			return
+		}
+
+		$.ajax({
+			url: '/httpRequest',
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(form),
+			success: function(response) {
+				$('textarea').val(JSON.stringify(response, null, 2))
+			},
+			error: function(error) {
+				console.log(error.statusText);
+			}
+		});
+	});
+</script>

@@ -5,6 +5,8 @@ const app = express();
 
 // 使用body-parser中间件解析JSON类型的请求体
 app.use(bodyParser.json());
+// 静态资源目录
+app.use(express.static('public'));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -13,8 +15,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/", (req, res) => res.send("Hello Express"));
-app.post("/", (req, res) => res.send("Hello Express"));
+app.get("/", (req, res) => res.send("Hello !!"));
+app.post("/", (req, res) => res.send("Hello !!"));
 
 // 发送http请求
 app.post("/httpRequest", (req, res) => {

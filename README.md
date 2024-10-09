@@ -1,2 +1,2 @@
-# fetch-third-party-api
-用于在https://greasyfork.org/zh-CN/scripts/508417-json-viewer脚本中，简单发送http请求第三方的API
+# online-fetch-api
+基于express + axios实现简单的在线发送http请求
