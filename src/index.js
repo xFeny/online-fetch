@@ -24,16 +24,15 @@ app.post("/httpRequest", (req, res) => {
 
     headers = headers ? JSON.parse(headers) : {}
     params = params ? JSON.parse(params) : {}
-    console.log(headers, params)
 
     axios({
         url,
         method,
+        data: params,
         headers: {
             'Content-Type': contentType,
             ...headers
-        },
-        data: contentType.includes('application/json') ? params : new URLSearchParams(params)
+        }
     }).then(function (response) {
         res.json(response.data)
     }).catch(function (error) {
