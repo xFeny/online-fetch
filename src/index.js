@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const app = express();
@@ -15,7 +16,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/", (req, res) => res.send("Hello !!"));
+const parentDir = path.resolve(__dirname, '..');
+app.get("/", (req, res) => {
+    res.sendFile(parentDir + '/public/example.html')
+});
 app.post("/", (req, res) => res.send("Hello !!"));
 
 // 发送http请求
