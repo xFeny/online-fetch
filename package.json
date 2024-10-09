@@ -1,0 +1,25 @@
+{
+  "name": "fetch-third-party-api",
+  "version": "1.0.0",
+  "description": "用于简单发送http请求第三方免费的API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xFeny/fetch-third-party-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xFeny/fetch-third-party-api/issues"
+  },
+  "homepage": "https://github.com/xFeny/fetch-third-party-api#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1"
+  }
+}
