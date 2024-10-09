@@ -28,11 +28,12 @@ app.post("/httpRequest", (req, res) => {
     axios({
         url,
         method,
-        data: params,
         headers: {
             'Content-Type': contentType,
             ...headers
-        }
+        },
+        data: params,
+        params: method === 'GET' ? new URLSearchParams(params) : null,
     }).then(function (response) {
         res.json(response.data)
     }).catch(function (error) {
