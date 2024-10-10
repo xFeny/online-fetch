@@ -21,6 +21,9 @@
   "dependencies": {
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "json-2-java": "^1.2.7",
+    "json-to-go": "^1.0.1",
+    "json-to-ts": "^2.1.0"
   }
 }
