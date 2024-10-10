@@ -1,8 +1,6 @@
 const express = require('express');
 const JsonToTS = require('json-to-ts')
 const JsonToGo = require('json-to-go')
-const jsonToKotlinClass = require("json-to-kotlin-class");
-const { JsonToJava } = require('json-2-java');
 const router = express.Router();
 
 /**
