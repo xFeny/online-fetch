@@ -6,7 +6,7 @@ router.post("/httpRequest", (req, res) => {
   // 获取POST请求体中的数据
   let { url, method, headers, params, contentType } = req.body;
 
-  if (url) {
+  if (!url) {
     res.json("url 不能为空");
     return;
   }
