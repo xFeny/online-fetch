@@ -35,6 +35,6 @@ const loadRoutes = (dir) => {
 };
 loadRoutes("controller");
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+app.listen(3010, () => console.log("Local:\t http://localhost:3010"));
 
 exports.app = app;

@@ -1,7 +1,7 @@
 const express = require("express");
 const JsonToTS = require("json-to-ts");
 const JsonToGo = require("json-to-go");
-const jsonToJava = require("../common/jsonToJava");
+const jsonToJavaBean = require("../common/jsonToJavaBean");
 const fs = require("fs");
 
 const router = express.Router();
@@ -47,7 +47,7 @@ router.post("/jsonToJava", (req, res) => {
     return;
   }
 
-  const convert = jsonToJava.convert(json, package);
+  const convert = jsonToJavaBean(json, package);
   res.send(convert);
 });
 
