@@ -23,6 +23,7 @@ router.post("/httpRequest", (req, res) => {
       ...headers,
     },
     data: params,
+    responseType: "text",
     params: method === "GET" ? new URLSearchParams(params) : null,
   })
     .then(function (response) {

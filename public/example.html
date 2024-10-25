@@ -147,7 +147,7 @@
       contentType: "application/json",
       data: JSON.stringify(form),
       success: function (response) {
-        $("textarea").val(JSON.stringify(response, null, 2));
+        $("textarea").val(JSON.stringify(JSON.parse(response), null, 2));
         layer.closeAll();
       },
       error: function (error) {
