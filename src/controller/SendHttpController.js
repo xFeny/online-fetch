@@ -30,7 +30,6 @@ router.post("/httpRequest", (req, res) => {
       res.json(response.data);
     })
     .catch(function (error) {
-      console.log(error.message);
       if (error.response) {
         res.json(error.response.data);
       } else {
