@@ -4,6 +4,7 @@
   "description": "用于简单发送http请求第三方免费的API",
   "main": "index.js",
   "scripts": {
+    "dev": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api/index.ts"
   },

@@ -18,8 +18,7 @@ router.post("/httpRequest", (req, res) => {
     url,
     method,
     headers: {
-      "Content-Type":
-        contentType || "application/x-www-form-urlencoded;charset=UTF-8",
+      "Content-Type": contentType || "application/x-www-form-urlencoded;charset=UTF-8",
       ...headers,
     },
     data: params,
@@ -31,10 +30,10 @@ router.post("/httpRequest", (req, res) => {
     })
     .catch(function (error) {
       if (error.response) {
-        res.json(error.response.data);
+        res.send(JSON.stringify(error.response.data));
       } else {
         let { status, message } = error;
-        res.json({ code: status, message });
+        res.send(JSON.stringify({ code: status, message }));
       }
     });
 });
